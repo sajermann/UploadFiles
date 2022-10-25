@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import Input from '../../Components/Input';
+import { Upload } from '../../Components/Upload';
 import { useTranslation } from '../../Hooks/UseTranslation';
 import { delay } from '../../Utils/Delay';
 import { handleInput } from '../../Utils/HandleInput';
@@ -65,6 +66,7 @@ export default function Home() {
 					{isLoading ? translate('ADDING...') : translate('ADD')}
 				</button>
 			</form>
+			<Upload />
 		</div>
 	);
 }
