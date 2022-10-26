@@ -10,13 +10,12 @@ function Mock() {
 	return <Home />;
 }
 
-describe('Pages/Home', () => {
+describe.skip('Pages/Home', () => {
 	it(`should render list items`, () => {
 		const { getByText } = render(<Mock />);
 		expect(getByText('Bruno')).toBeInTheDocument();
 		expect(getByText('Marcia')).toBeInTheDocument();
 	});
-
 	it(`should add new item to the list`, async () => {
 		const { getByText, debug, getByTestId, findByText } = render(<Mock />);
 		const inputElement = getByTestId('inputNewItem');
@@ -26,7 +25,6 @@ describe('Pages/Home', () => {
 		await userEvent.click(addButton);
 		expect(await findByText('Dereck')).toBeInTheDocument();
 	});
-
 	it(`should remove item to the list`, async () => {
 		const { getAllByText, debug, queryByText } = render(<Mock />);
 		const removeButton = getAllByText('REMOVE');
@@ -36,7 +34,6 @@ describe('Pages/Home', () => {
 			expect(queryByText('Bruno')).not.toBeInTheDocument();
 		});
 	});
-
 	it(`should not add repeat item`, async () => {
 		const { getByText, debug, getByTestId, findAllByText } = render(<Mock />);
 		const inputElement = getByTestId('inputNewItem');

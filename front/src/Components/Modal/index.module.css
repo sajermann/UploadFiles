@@ -1,0 +1,24 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.overlay {
+	@apply bg-black/60;
+	@apply inset-0;
+	@apply fixed;
+}
+
+.content {
+	@apply fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg shadow-black/25;
+	@apply bg-[#2A2634];
+	@apply py-8;
+	@apply px-10;
+	@apply text-white;
+	@apply top-1/2;
+	@apply left-1/2;
+	@apply -translate-x-1/2;
+	@apply -translate-y-1/2;
+	@apply rounded-lg;
+	@apply shadow-lg;
+	@apply shadow-black/25;
+}
