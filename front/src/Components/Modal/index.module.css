@@ -9,7 +9,7 @@
 }
 
 .content {
-	@apply fixed bg-[#2A2634] py-8 px-10 text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-lg shadow-black/25;
+	@apply fixed bg-[#2A2634];
 	@apply bg-[#2A2634];
 	@apply py-8;
 	@apply px-10;
@@ -21,4 +21,8 @@
 	@apply rounded-lg;
 	@apply shadow-lg;
 	@apply shadow-black/25;
+}
+
+.closeButton {
+	@apply absolute top-3 right-3 hover:text-slate-600 transition-colors duration-500;
 }

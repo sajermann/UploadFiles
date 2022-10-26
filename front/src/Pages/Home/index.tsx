@@ -57,16 +57,17 @@ export default function Home() {
 						containerProps={{ className: 'w-full lg:w-[200px] ' }}
 					/>
 				</div>
-
-				<button
-					type="submit"
-					className={styles.buttonSubmit}
-					disabled={isLoading}
-				>
-					{isLoading ? translate('ADDING...') : translate('ADD')}
-				</button>
+				<div className="max-w-lg flex gap-3">
+					<button
+						type="submit"
+						className={styles.buttonSubmit}
+						disabled={isLoading}
+					>
+						{isLoading ? translate('ADDING...') : translate('ADD')}
+					</button>
+					<Upload />
+				</div>
 			</form>
-			<Upload />
 		</div>
 	);
 }

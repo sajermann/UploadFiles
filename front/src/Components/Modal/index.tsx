@@ -1,8 +1,9 @@
 import * as Dialog from '@radix-ui/react-dialog';
+import { X } from 'phosphor-react';
 import styles from './index.module.css';
 
 type Props = {
-	children: JSX.Element;
+	children: React.ReactNode;
 	isOpen: boolean;
 	onClose: () => void;
 	width?: string;
@@ -10,6 +11,7 @@ type Props = {
 	closeByEsc?: boolean;
 	contentProps?: object;
 	overlayProps?: object;
+	closeButton?: boolean;
 };
 
 export function Modal({
@@ -21,6 +23,7 @@ export function Modal({
 	width,
 	contentProps,
 	overlayProps,
+	closeButton,
 }: Props) {
 	return (
 		<Dialog.Root open={isOpen}>
@@ -36,6 +39,15 @@ export function Modal({
 					onEscapeKeyDown={closeByEsc ? onClose : undefined}
 					className={styles.content}
 				>
+					{closeButton && (
+						<button
+							type="button"
+							className={styles.closeButton}
+							onClick={onClose}
+						>
+							<X size={32} />
+						</button>
+					)}
 					{children}
 				</Dialog.Content>
 			</Dialog.Portal>

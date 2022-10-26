@@ -1,22 +1,31 @@
-import { MagnifyingGlassPlus } from 'phosphor-react';
-import * as Dialog from '@radix-ui/react-dialog';
-import { useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import { CloudArrowUp } from 'phosphor-react';
+import { ChangeEvent, useState } from 'react';
+import { uploadService } from '../../Services/Upload';
+import { InputFile } from '../InputFile';
 import { Modal } from '../Modal';
 
-type Props = {
-	children: JSX.Element;
-	isOpen?: boolean;
-	onClose: () => void;
-	percentage?: number;
-	disableBackdrop?: boolean;
-	disableEsc?: boolean;
-	disableClickOnBackdrop?: boolean;
-	oneClickToClose?: boolean;
-};
-
 export function Upload() {
-	const [name, setName] = useState('');
 	const [isOpenModal, setIsOpenModal] = useState(false);
+	const [file, setFile] = useState<File | null>(null);
+
+	function handleChange(e: ChangeEvent<HTMLInputElement>) {
+		const { files } = e.target;
+		if (files && files[0]) {
+			setFile(files[0]);
+		}
+	}
+
+	async function handleSave() {
+		console.log({ file });
+		if (!file) {
+			return;
+		}
+		const form = new FormData();
+		form.append('uploadFile', file);
+		const result = await uploadService.postUpload(form);
+		console.log(result);
+	}
 
 	return (
 		<>
@@ -25,25 +34,21 @@ export function Upload() {
 				className="py-3 px-4 bg-violet-500 hover:bg-violet-600 text-white rounded flex items-center gap-3"
 				onClick={() => setIsOpenModal(prev => !prev)}
 			>
-				<MagnifyingGlassPlus size={24} />
-				Publicar anúncio
+				<CloudArrowUp size={24} />
+				Upload File
 			</button>
 			<Modal
 				isOpen={isOpenModal}
 				onClose={() => setIsOpenModal(prev => !prev)}
 				width="69%"
+				closeButton
 			>
-				<form
-					className="mt-8 flex flex-col gap-4"
-					onSubmit={() => console.log('submitdo')}
-				>
-					<input
-						type="text"
-						value={name}
-						onChange={e => setName(e.target.value)}
-					/>
-					Upload de Fato
-					{name}
+				<h2>Selecione o arquivo para upload</h2>
+				<form className="mt-2 flex flex-col gap-4">
+					<InputFile onChange={handleChange} />
+					<button type="button" onClick={handleSave}>
+						Salvar
+					</button>
 				</form>
 			</Modal>
 		</>
