@@ -18,9 +18,9 @@ const api = axios.create({
 	headers,
 });
 
-if (import.meta.env.NODE_ENV !== 'test') {
-	api.defaults.timeout = 1000 * 60 * 10; // (Ms * Sec * Min = 10 Minutes)
-	Interceptor(api);
-}
+// if (import.meta.env.NODE_ENV !== 'test') {
+api.defaults.timeout = 1000 * 60 * 10; // (Ms * Sec * Min = 10 Minutes)
+Interceptor(api);
+// }
 
 export default api;
