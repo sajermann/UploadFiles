@@ -9,7 +9,10 @@ const TIMEZONE = new Date().toTimeString().split(' ')[1] || '';
 
 export default function Interceptor(api: AxiosInstance) {
 	api.interceptors.response.use(
-		(response: AxiosResponse) => response,
+		(response: AxiosResponse) => {
+			console.log(`[response success] [${JSON.stringify(response)}]`);
+			return response;
+		},
 		async (error: AxiosError) => {
 			// if (!error.response) {
 			// 	const customMessage = {
