@@ -8,6 +8,7 @@ export function InputFile({ onChange }: Props) {
 	const [file, setFile] = useState<File | null>(null);
 
 	function handleChange(e: ChangeEvent<HTMLInputElement>) {
+		console.log({ e });
 		const { files } = e.target;
 		if (files && files[0]) {
 			setFile(files[0]);
@@ -22,9 +23,10 @@ export function InputFile({ onChange }: Props) {
 			<label className="bg-green-700 text-white p-3 cursor-pointer w-60 hover:bg-green-900">
 				Escolher arquivo
 				<input
+					data-testid="input"
 					accept=".pdf, .xml"
 					type="file"
-					className="hidden"
+					// className="hidden"
 					onChange={handleChange}
 				/>
 			</label>

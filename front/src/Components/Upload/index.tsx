@@ -40,7 +40,7 @@ export function Upload() {
 			<Modal
 				isOpen={isOpenModal}
 				onClose={() => setIsOpenModal(prev => !prev)}
-				width="69%"
+				width="50%"
 				closeButton
 			>
 				<h2>Selecione o arquivo para upload</h2>
