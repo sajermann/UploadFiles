@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-.container {
+.customContainer {
 	@apply flex flex-col;
 	@apply min-w-full;
 
@@ -28,4 +28,8 @@
 	@apply duration-500;
 	@apply disabled:cursor-not-allowed;
 	@apply text-white;
+}
+
+.table{
+	@apply bg-white;
 }
