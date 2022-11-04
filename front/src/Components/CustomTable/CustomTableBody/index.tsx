@@ -1,7 +1,11 @@
+/* eslint-disable no-restricted-syntax */
+/* eslint-disable func-names */
+/* eslint-disable @typescript-eslint/no-use-before-define */
 /* eslint-disable react/no-unstable-nested-components */
 import { memo, useEffect, useState } from 'react';
 import useWindowDimensions from '../../../Hooks/UseWindowDimensions';
 import { generateNumbers } from '../../../Utils/Random';
+import './index.css';
 
 type Props = {
 	data: any[];
@@ -78,13 +82,16 @@ export default function CustomTableBody({
 			>
 				<div className="flex flex-nowrap">
 					<table
+						id="resizeMe"
+						className="customTable"
 						data-testid="customTable-table"
 						style={{ borderCollapse: 'collapse' }}
 					>
 						<thead data-testid="customTable-thead">
 							<tr data-testid="customTable-tr">
-								{columns.map(column => (
+								{columns.map((column, i) => (
 									<th
+										id={`column-${i}`}
 										data-testid="customTable-th"
 										key={generateNumbers(5)}
 										className="h-14 sticky top-0 px-1 border z-[1] bg-gray-900 font-bold text-white"

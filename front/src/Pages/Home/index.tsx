@@ -1,11 +1,10 @@
+/* eslint-disable react/button-has-type */
 import React, { useState } from 'react';
 import { formatDateAndHour } from '@sajermann/utils/FormatDate';
-
-import { useTranslation } from '../../Hooks/UseTranslation';
+import { useNavigate } from 'react-router-dom';
 
 import styles from './index.module.css';
-import 'react-data-grid/lib/styles.css';
-import Table from '../../Components/DataTable';
+// import 'react-data-grid/lib/styles.css';
 import CustomTable from '../../Components/CustomTable';
 import data from '../../Data/tags.json';
 
@@ -18,6 +17,7 @@ type Batata = {
 export default function Home() {
 	const [isLoading, setIsLoading] = useState(false);
 	const [selectedRows, setSelectedRows] = useState<object[]>([]);
+	const navigate = useNavigate();
 
 	function handleAddItem(id: string) {
 		console.log('Add', id);
@@ -107,6 +107,9 @@ export default function Home() {
 				columns={columns}
 				itemsPerPage={50}
 			/>
+			<button onClick={() => navigate('/custom-react-table')}>
+				Custom Table
+			</button>
 		</div>
 	);
 }
