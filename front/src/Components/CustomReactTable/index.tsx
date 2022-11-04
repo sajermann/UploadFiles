@@ -102,10 +102,11 @@ export function CustomReactTable({ columns, data }: any) {
 
 			<div {...getTableBodyProps()}>
 				<FixedSizeList
+					className={styles.tbody}
 					height={400}
 					itemCount={rows.length}
 					itemSize={35}
-					width={totalColumnsWidth + scrollBarSize}
+					width="100%"
 				>
 					{RenderRow}
 				</FixedSizeList>
@@ -136,6 +137,7 @@ function App() {
 			{
 				Header: 'Last Name',
 				accessor: 'lastname',
+				width: 600,
 			},
 			{
 				Header: 'Email',
@@ -145,13 +147,13 @@ function App() {
 		[]
 	);
 
-	const data = React.useMemo(() => createRandomUser(100000), []);
+	const data = React.useMemo(() => createRandomUser(100), []);
 	console.log({ data });
 	return (
 		<div className={styles.customContainer}>
-			<div className={styles.tableWrap}>
-				<CustomReactTable columns={columns} data={data} />
-			</div>
+			{/* <div className={styles.tableWrap}> */}
+			<CustomReactTable columns={columns} data={data} />
+			{/* </div> */}
 		</div>
 	);
 }
