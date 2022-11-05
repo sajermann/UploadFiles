@@ -107,7 +107,7 @@ export default function Home() {
 				columns={columns}
 				itemsPerPage={50}
 			/>
-			<button onClick={() => navigate('/custom-react-table')}>
+			<button onClick={() => navigate('/custom-react-table-v8')}>
 				Custom Table
 			</button>
 		</div>
