@@ -19,10 +19,11 @@ thead {
 }
 
 th {
-	border-bottom: 1px solid lightgray;
-	border-right: 1px solid lightgray;
+	/* border-bottom: 1px solid lightgray;
+	border-right: 1px solid lightgray; */
 	padding: 2px 4px;
 	text-align: left;
+	position: relative;
 }
 
 td {
@@ -30,16 +31,53 @@ td {
 }
 
 tr td {
-	border: 1px solid;
+	/* border: 1px solid; */
+	overflow: hidden;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-tr {
-	/* height: 10px; */
+
+
+tr:nth-child(even){
+	background-color: #ff5f6f
+}
+.active{
+	background-color: green !important;
 }
 
-.container {
-	border: 1px solid lightgray;
+
+.customContainer {
+	/* border: 1px solid lightgray; */
 	height: 500px;
 	max-width: 100%;
 	overflow: auto;
+}
+
+.resizer {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: 100%;
+	width: 5px;
+	background: rgba(0, 0, 0, 0.5);
+	cursor: col-resize;
+	user-select: none;
+	touch-action: none;
+}
+
+.resizer.isResizing {
+	background: blue;
+	opacity: 1;
+}
+
+@media (hover: hover) {
+	.resizer {
+		opacity: 0;
+	}
+
+	*:hover > .resizer {
+		opacity: 1;
+	}
 }
