@@ -218,6 +218,7 @@ export function CustomReactTableV8<T>({
 							</tr>
 						))}
 					</thead>
+
 					<tbody style={{ opacity: isLoading ? 0.5 : 1 }}>
 						{data.length === 0 && !isLoading && (
 							<tr style={{ height: '100%' }}>
